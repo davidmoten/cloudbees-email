@@ -45,6 +45,8 @@ public class DatabaseServlet extends HttpServlet {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+		resp.setContentType("text/plain");
+		resp.getWriter().write("sid=somebody&status=1");
 	}
 
 	private Connection getConnection(String resource) {
