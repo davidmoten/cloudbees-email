@@ -1,29 +1,39 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	version="2.5">
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+  version="2.5">
 
-	<display-name>${project.artifactId} ${project.version}</display-name>
+  <display-name>${project.artifactId} ${project.version}</display-name>
 
-	<!-- order of listeners is IMPORTANT because the order of load is determined 
-		by the order in this file -->
+  <!-- order of listeners is IMPORTANT because the order of load is determined 
+    by the order in this file -->
 
-	<servlet>
-		<servlet-name>Email</servlet-name>
-		<servlet-class>com.github.davidmoten.email.EmailServlet</servlet-class>
-	</servlet>
+  <servlet>
+    <servlet-name>Email</servlet-name>
+    <servlet-class>com.github.davidmoten.email.EmailServlet</servlet-class>
+  </servlet>
 
-	<servlet-mapping>
-		<servlet-name>Email</servlet-name>
-		<url-pattern>/email</url-pattern>
-	</servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Email</servlet-name>
+    <url-pattern>/email</url-pattern>
+  </servlet-mapping>
 
-	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>index.html</welcome-file>
-	</welcome-file-list>
+  <servlet>
+    <servlet-name>Database</servlet-name>
+    <servlet-class>com.github.davidmoten.email.DatabaseServlet</servlet-class>
+  </servlet>
 
-	<session-config>
-		<session-timeout>15</session-timeout>
-	</session-config>
+  <servlet-mapping>
+    <servlet-name>Database</servlet-name>
+    <url-pattern>/db</url-pattern>
+  </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+  <session-config>
+    <session-timeout>15</session-timeout>
+  </session-config>
 
 </web-app>
