@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import com.github.davidmoten.rx.jdbc.Database;
+
 public class DatabaseServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -4137504003076597022L;
@@ -29,9 +31,16 @@ public class DatabaseServlet extends HttpServlet {
 		try {
 			String resource = "java:comp/env/jdbc/flashq";
 			Connection con = getConnection(resource);
-			con.prepareStatement(
-					"create table flashq.report(userId varchar(255), text varchar(4000))")
-					.executeUpdate();
+			Database db = Database.from(con);
+			String text = Parameters.toString(req);
+			int count = db.update("insert into flashq.entry(text) values(?)")
+			// set text parameter
+					.parameter(text)
+					// get num records inserted
+					.count()
+					// block and return
+					.toBlockingObservable().single();
+			System.out.println(count + " records inserted");
 			con.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
