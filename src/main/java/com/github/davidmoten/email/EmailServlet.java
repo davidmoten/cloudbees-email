@@ -29,12 +29,16 @@ public class EmailServlet extends HttpServlet {
 
 		StringBuilder s = new StringBuilder();
 		@SuppressWarnings("unchecked")
-		Enumeration<String> en = req.getAttributeNames();
+		Enumeration<String> en = req.getParameterNames();
 		while (en.hasMoreElements()) {
 			String key = en.nextElement();
+			String[] values = req.getParameterValues(key);
 			s.append(key);
 			s.append("=");
-			s.append(req.getParameter(key));
+			for (String value : values) {
+				s.append(value);
+				s.append(" ");
+			}
 			s.append("\n");
 		}
 		s.append("sent via SendGrid");
