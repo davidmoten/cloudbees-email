@@ -60,7 +60,7 @@ public class EmailServlet extends HttpServlet {
 		resp.addHeader("Cache-Control", "post-check=0, pre-check=0");
 		// Set standard HTTP/1.0 no-cache header.
 		resp.setHeader("Pragma", "no-cache");
-
+		resp.setContentType("text/plain");
 		resp.getWriter().write("sid=somebody&status=1");
 	}
 
