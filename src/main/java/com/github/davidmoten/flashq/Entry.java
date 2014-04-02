@@ -1,4 +1,4 @@
-package com.github.davidmoten.email;
+package com.github.davidmoten.flashq;
 
 public class Entry {
 	private final long id;

@@ -1,4 +1,4 @@
-package com.github.davidmoten.email;
+package com.github.davidmoten.flashq;
 
 import java.io.IOException;
 import java.io.PrintWriter;

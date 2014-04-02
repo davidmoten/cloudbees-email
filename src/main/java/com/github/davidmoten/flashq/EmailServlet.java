@@ -1,6 +1,6 @@
-package com.github.davidmoten.email;
+package com.github.davidmoten.flashq;
 
-import static com.github.davidmoten.email.Util.setNoCache;
+import static com.github.davidmoten.flashq.Util.setNoCache;
 
 import java.io.IOException;
 

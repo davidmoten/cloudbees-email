@@ -9,7 +9,7 @@
 
   <servlet>
     <servlet-name>Email</servlet-name>
-    <servlet-class>com.github.davidmoten.email.EmailServlet</servlet-class>
+    <servlet-class>com.github.davidmoten.flashq.EmailServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
@@ -19,7 +19,7 @@
 
   <servlet>
     <servlet-name>Database</servlet-name>
-    <servlet-class>com.github.davidmoten.email.DatabaseServlet</servlet-class>
+    <servlet-class>com.github.davidmoten.flashq.DatabaseServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
