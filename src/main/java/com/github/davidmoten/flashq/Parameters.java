@@ -13,12 +13,13 @@ public class Parameters {
 		while (en.hasMoreElements()) {
 			String key = en.nextElement();
 			String[] values = req.getParameterValues(key);
-			s.append(key);
-			s.append("=");
-			// assume one value per key
-			if (values.length > 0)
-				s.append(values[0]);
-			s.append("||");
+			for (String value : values) {
+				if (s.length() > 0)
+					s.append("||");
+				s.append(key);
+				s.append("=");
+				s.append(value);
+			}
 		}
 		return s.toString();
 	}
