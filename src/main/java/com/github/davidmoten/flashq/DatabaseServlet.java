@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import rx.functions.Action1;
 
 import com.github.davidmoten.rx.jdbc.ConnectionProvider;
@@ -23,6 +26,9 @@ import com.github.davidmoten.rx.jdbc.Database;
 public class DatabaseServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -4137504003076597022L;
+
+	private static final Logger log = LoggerFactory
+			.getLogger(DatabaseServlet.class);
 	private Database db;
 
 	@Override
@@ -39,6 +45,7 @@ public class DatabaseServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		log.info("params=" + Parameters.toString(req));
 		Util.setNoCache(resp);
 		if ("true".equals(req.getParameter("list")))
 			list(resp);
